@@ -1,0 +1,16 @@
+mongoimport -d mydb -c cars --type csv --file mpg_dataset.csv --headerline
+
+db.cars.find({cylinders:{$gte:5}}) 
+
+db.cars.find({
+$and:
+[{"mpg":{$eq:18}},
+{weight:{$gte:3500}}]
+})
+
+db.cars.updateMany({
+weight:
+{$gte:3500}},{$set:{acceleration:8}
+})
+
+db.cars.find({cylinders:{$gte:4}},{horsepower:1,displacement:1,_id:0})
